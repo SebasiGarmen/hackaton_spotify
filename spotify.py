@@ -23,18 +23,21 @@ def get_track(track):
 
     response = requests.get("https://api.spotify.com/v1/search?q=" + track +"&type=track", headers=headers)
 
+
     if response.status_code == 200:
         print(response.text)
+        lista=[]
         response_dict = response.json()
         results = response_dict["tracks"]
         items = results ["items"]
         for value in items:
-            print value["id"]
+            lista.append(value["id"])
+
 
 
 
     params = {
-    "tracks": track
+    "tracks": lista[0]
     }
 
     return params
